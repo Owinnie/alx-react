@@ -1,0 +1,7 @@
+.App-body {
+    font-size: var(--font-size-main);
+    padding: calc(var(--padding) *2);
+    height: 50vh;
+  
+  }
+  
