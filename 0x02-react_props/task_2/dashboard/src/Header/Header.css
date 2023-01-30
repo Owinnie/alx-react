@@ -1,0 +1,15 @@
+.App-header {
+    background-color: var(--background-color-white);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    color: white;
+    border-bottom: var(--border-bottom);
+  }
+  
+  .App-header h1 {
+    color: var(--color-primary);
+    display: flex;
+  }
+  

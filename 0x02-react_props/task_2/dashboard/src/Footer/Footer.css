@@ -1,0 +1,7 @@
+.App-footer {
+    border-top: var(--border-bottom);
+    text-align: center;
+    font-style: italic;
+    padding: var(--padding);
+  }
+  
