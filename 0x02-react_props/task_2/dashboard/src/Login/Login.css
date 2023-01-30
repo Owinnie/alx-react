@@ -1,7 +1,12 @@
+:root {
+  --holberton-red: #e1484c;
+}
+
 .App-body {
-    font-size: var(--font-size-main);
-    padding: calc(var(--padding) *2);
-    height: 50vh;
-  
-  }
+  padding: 36px 24px;
+}
+
+.App-body input {
+  margin: 0 16px 0 8px;
+}
   

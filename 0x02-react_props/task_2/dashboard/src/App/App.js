@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
-import { getFullYear, getFooterCopy } from '../utils/utils';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Notification from '../Notifications/Notifications';
 import Login from '../Login/Login';
-import Notifications from '../Notifications/Notifications';
+
 
 function App() {
   return (
     <React.Fragment>
-      <Notifications />
+      <Notification />
       <div className="App">
         <Header />
         <Login />

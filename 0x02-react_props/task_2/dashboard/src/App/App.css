@@ -1,13 +1,17 @@
-.App {
-  height: 100vh;
-  --border-bottom: 4px solid rgb(226, 61, 61);
-  --color-primary: #E0354b;
-  --background-color-white: white;
-  --padding: 1.2rem;
-  --font-size-main: 1rem;
+:root {
+  --holberton-red: #e1484c;
 }
 
-.App-logo {
-  height: 200px;
-  width: 200px;  
+body {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+div {
+  padding: 2px 8px;
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
 }
