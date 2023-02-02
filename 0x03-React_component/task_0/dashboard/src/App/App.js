@@ -26,8 +26,6 @@ class App extends Component {
     
     const {isLoggedIn} = this.props
 
-    const {isLoggedIn} = this.props
-
     return (
       <React.Fragment>
         <Notification listNotifications={listNotifications}/>
