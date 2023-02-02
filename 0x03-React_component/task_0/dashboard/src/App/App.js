@@ -24,6 +24,8 @@ class App extends Component {
       {id: 3, html: {__html: getLatestNotification()}, type: "urgent"},
     ];
 
+    const {isLoggedIn} = this.props
+
     return (
       <React.Fragment>
         <Notification listNotifications={listNotifications}/>
