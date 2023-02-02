@@ -14,6 +14,7 @@ class App extends Component {
   constructor(props) {
     super(props);
   
+    this.logOut = props.logOut;
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
@@ -21,7 +22,7 @@ class App extends Component {
     e.preventDefault();
     if (e.ctrlKey && e.key == 'h') {
       alert("Logging you out");
-      this.props.logOut();
+      this.logOut();
     }
 
   }
