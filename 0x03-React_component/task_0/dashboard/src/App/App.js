@@ -11,10 +11,6 @@ import PropTypes from 'prop-types';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const listCourses = [
       {id: 1, name: 'ES6', credit: 60},
