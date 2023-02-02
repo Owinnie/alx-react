@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -9,33 +9,29 @@ import { getLatestNotification } from '../utils/utils';
 import PropTypes from 'prop-types';
 
 
-class App extends Component {
+class App extends React.Component {
+  static listCourses = [
+    {id: 1, name: 'ES6', credit: 60},
+    {id: 2, name: 'Webpack', credit: 20},
+    {id: 3, name: 'React', credit: 40}
+  ];
 
+  static listNotifications = [
+    {id: 1, value: "New course available", type: "default"},
+    {id: 2, value: "New resume available", type: "urgent"},
+    {id: 3, html: {__html: getLatestNotification()}, type: "urgent"},
+  ];
   constructor(props) {
-    super(props)
+    super(props);
   }
 
-  render() {
-    const listCourses = [
-      {id: 1, name: 'ES6', credit: 60},
-      {id: 2, name: 'Webpack', credit: 20},
-      {id: 3, name: 'React', credit: 40}
-    ];
-
-    const listNotifications = [
-      {id: 1, value: "New course available", type: "default"},
-      {id: 2, value: "New resume available", type: "urgent"},
-      {id: 3, html: {__html: getLatestNotification()}, type: "urgent"},
-    ];
-    
-    const {isLoggedIn} = this.props
-
+  render () {
     return (
       <React.Fragment>
-        <Notification listNotifications={listNotifications}/>
+        <Notification listNotifications={this.listNotifications}/>
         <div className="App">
           <Header />
-          {isLoggedIn ? <CourseList listCourses={listCourses}/> : <Login />}
+          {this.props.isLoggedIn ? <CourseList listCourses={this.listCourses}/> : <Login />}
           <Footer />
         </div>
       </React.Fragment>
@@ -44,7 +40,7 @@ class App extends Component {
 }
 
 App.defaultProps = {
-  isLoggedIn: false
+  isLoggedIn: false,
 };
 
 App.propTypes = {
