@@ -30,6 +30,10 @@ class App extends Component {
     window.addEventListener('keydown', this.handleKeyDown);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  }
+
   render() {
     const listCourses = [
       {id: 1, name: 'ES6', credit: 60},
