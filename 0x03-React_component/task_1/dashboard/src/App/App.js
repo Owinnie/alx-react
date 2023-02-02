@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -9,49 +9,48 @@ import { getLatestNotification } from '../utils/utils';
 import PropTypes from 'prop-types';
 
 
-class App extends React.Component {
-  static listCourses = [
-    {id: 1, name: 'ES6', credit: 60},
-    {id: 2, name: 'Webpack', credit: 20},
-    {id: 3, name: 'React', credit: 40}
-  ];
-
-  static listNotifications = [
-    {id: 1, value: "New course available", type: "default"},
-    {id: 2, value: "New resume available", type: "urgent"},
-    {id: 3, html: {__html: getLatestNotification()}, type: "urgent"},
-  ];
+class App extends Component {
 
   constructor(props) {
     super(props);
-    this.isLoggedIn = props.isLoggedIn;
-    this.logOut = props.logOut;
+  
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   handleKeyDown(e) {
     e.preventDefault();
-    if (e.ctrlKey && e.key === 'h') {
-        alert("Logging you out");
-        this.logOut();
-    }  
+    if (e.ctrlKey && e.key == 'h') {
+      alert("Logging you out");
+      this.props.logOut();
+    }
+
   }
 
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown);
-  }
+  render() {
+    const listCourses = [
+      {id: 1, name: 'ES6', credit: 60},
+      {id: 2, name: 'Webpack', credit: 20},
+      {id: 3, name: 'React', credit: 40}
+    ];
 
-  render () {
+    const listNotifications = [
+      {id: 1, value: "New course available", type: "default"},
+      {id: 2, value: "New resume available", type: "urgent"},
+      {id: 3, html: {__html: getLatestNotification()}, type: "urgent"},
+    ];
+    
+    const { isLoggedIn } = this.props;
+
     return (
       <React.Fragment>
-        <Notification listNotifications={this.listNotifications}/>
+        <Notification listNotifications={listNotifications}/>
         <div className="App">
           <Header />
-          {this.props.isLoggedIn ? <CourseList listCourses={this.listCourses}/> : <Login />}
+          {isLoggedIn ? <CourseList listCourses={listCourses}/> : <Login />}
           <Footer />
         </div>
       </React.Fragment>
