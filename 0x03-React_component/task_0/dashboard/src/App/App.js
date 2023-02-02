@@ -23,6 +23,8 @@ class App extends Component {
       {id: 2, value: "New resume available", type: "urgent"},
       {id: 3, html: {__html: getLatestNotification()}, type: "urgent"},
     ];
+    
+    const {isLoggedIn} = this.props
 
     const {isLoggedIn} = this.props
 
