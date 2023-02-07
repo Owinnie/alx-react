@@ -3,6 +3,7 @@ import { jest } from '@jest/globals';
 import { shallow, mount } from 'enzyme';
 import Notifications from './Notifications';
 import { getLatestNotification } from '../utils/utils';
+import { StyleSheetTestUtils } from 'aphrodite';
 
 describe("Testing the <Notifications /> Component", () => {
   
@@ -14,6 +15,7 @@ describe("Testing the <Notifications /> Component", () => {
   ];
 
   beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
     wrapper = shallow(<Notifications />);
   });
 
