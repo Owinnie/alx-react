@@ -29,6 +29,29 @@ class App extends React.Component {
       {id: 2, value: "New resume available", type: "urgent"},
       {id: 3, html: {__html: getLatestNotification()}, type: "urgent"},
     ];
+
+    this.state = {
+      displayDrawer: false
+    }
+
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this)
+    this.handleHideDrawer = this.handleHideDrawer.bind(this)
+  }
+
+  handleDisplayDrawer = () => {
+    this.setState(prevState => {
+      if(prevState.displayDrawer === false) {
+        prevState.displayDrawer = true
+      }
+    })
+  }
+
+  handleHideDrawer = () => {
+    this.setState(prevState => {
+      if(prevState.displayDrawer === true) {
+        prevState.displayDrawer = false
+      }
+    })
   }
 
   handleKeyDown(e) {
@@ -50,7 +73,11 @@ class App extends React.Component {
   render () {
     return (
       <React.Fragment>
-        <Notification listNotifications={this.listNotifications}/>
+        <Notification
+          listNotifications={this.listNotifications}
+          displayDrawer={this.displayDrawer}
+          handleDisplayDrawer={this.handleDisplayDrawer}
+          handleHideDrawer={this.handleHideDrawer} />
         <div className="App">
           <Header />
           {this.props.isLoggedIn ?

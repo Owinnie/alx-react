@@ -2,11 +2,13 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { jest } from '@jest/globals';
 import App from './App';
+import { StyleSheetTestUtils } from 'aphrodite';
 
 describe('Test App.js', () => {
   let wrapper;
 
   beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
     wrapper = shallow(<App />);
   });
 
@@ -39,6 +41,7 @@ describe("Testing <App isLoggedIn={true} />", () => {
   let wrapper;
 
   beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
     wrapper = shallow(<App isLoggedIn={true}/>);
   });
 
@@ -52,6 +55,9 @@ describe("Testing <App isLoggedIn={true} />", () => {
 });
 
 describe("Testing <App logOut={function} />", () => {
+  beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
 
   it("verify that when the keys control and h are pressed the logOut function, passed as a prop, is called and the alert function is called with the string Logging you out", () => {
     const wrapper = mount(<App logOut={()=>{console.log("ctrl and h are pressed")}}/>);
@@ -64,5 +70,28 @@ describe("Testing <App logOut={function} />", () => {
     expect(alert).toBeCalledWith("Logging you out");
     expect(logout).toBeCalled();
     alert.mockRestore();
+  });
+});
+
+describe("Testing App Component's State />", () => {
+  let wrapper;
+
+  beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+    wrapper = shallow(<App/>);
+  });
+
+  it('check if default value of displayDrawer in state is false', () => {
+    expect(wrapper.state('displayDrawer')).toBe(false);
+  });
+
+  it('Verify that after calling handleDisplayDrawer, the state displayDrawer should now be true', () => {
+    wrapper.instance().handleDisplayDrawer();
+    expect(wrapper.state('displayDrawer')).toBe(true);
+  });
+
+  it('verify that after calling handleHideDrawer, the state displayDrawer is updated to be false', () => {
+    wrapper.instance().handleHideDrawer();
+    expect(wrapper.state('displayDrawer')).toBe(false);
   });
 });
